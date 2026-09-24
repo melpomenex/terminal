@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* =======================================================================
+   Base tokens (Classic Amber — the default identity). Mirrors design-tokens.ts
+   so the first painted frame is correct with zero JS.
+   ======================================================================= */
+:root {
+	--palette-bg: #000000;
+	--palette-panel: #050400;
+	--palette-amber: #FFB000;
+	--palette-amber-dim: #996600;
+	--palette-amber-bright: #FFD700;
+	--palette-red: #FF4400;
+	--palette-green: #00b050;
+
+	--bg: #000000;
+	--panel-bg: #050400;
+	--amber: #FFB000;
+	--amber-dim: #996600;
+	--amber-bright: #FFD700;
+	--red: #FF4400;
+	--green: #00b050;
+
+	--surface-raised: #0d0d0f;
+	--surface-sunken: #151518;
+	--surface-hover: #1a1a1f;
+	--row-stripe: #0a0a0c;
+	--row-divider: #0f0f12;
+	--border: #332200;
+	--border-light: #4a3300;
+	--border-soft: #1f1f22;
+
+	--text: #FFB000;
+	--text-bright: #FFD700;
+	--text-dim: #996600;
+	--text-mute: #888899;
+	--text-faint: #555566;
+	--text-inverse: #0a0a0c;
+	--accent: #FFB000;
+	--accent-dim: #996600;
+	--accent-bright: #FFD700;
+	--accent-soft: rgba(255, 176, 0, 0.12);
+	--accent-ring: rgba(255, 176, 0, 0.55);
+	--positive: #00b050;
+	--positive-soft: rgba(0, 176, 80, 0.12);
+	--negative: #ef4444;
+	--negative-soft: rgba(239, 68, 68, 0.12);
+	--info: #0ea5e9;
+
+	--fn-cancel: #662222;
+	--fn-go: #1a4d2e;
+	--fn-yellow: #4d3d00;
+	--fn-purple: #2d1a4d;
+
+	--font: 'JetBrains Mono', 'IBM Plex Mono', 'Courier New', monospace;
+	--font-size: 13px;
+	--font-size-xl: 15px;
+	--font-size-lg: 13px;
+	--font-size-base: 12px;
+	--font-size-sm: 11px;
+	--font-size-xs: 10px;
+	--font-size-xxs: 9px;
+	--line-height: 1.3;
+	--row-height: 24px;
+	--row-height-sm: 20px;
+
+	--space-1: 2px;
+	--space-2: 4px;
+	--space-3: 6px;
+	--space-4: 8px;
+	--space-5: 12px;
+	--space-6: 16px;
+
+	--radius-sm: 2px;
+	--radius: 3px;
+	--radius-lg: 5px;
+
+	--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
+	--shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+	--glow: 0 0 2px rgba(255, 176, 0, 0.3);
+
+	--z-pane: 1;
+	--z-dropdown: 9999;
+	--z-overlay: 10000;
+	--z-toast: 10001;
+	--z-modal: 10002;
+
+	--motion-instant: 0ms;
+	--motion-fast: 120ms;
+	--motion-base: 180ms;
+	--motion-slow: 280ms;
+	--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+	--ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* =======================================================================
+   Theme skins — FOUC-safe first paint. The runtime ThemeProvider emits the
+   authoritative set; these blocks ensure the very first frame is correct.
+   ======================================================================= */
+[data-theme="cyberpunk"] {
+	--bg: #08020f; --panel-bg: #0e0518;
+	--surface-raised: #140726; --surface-sunken: #1c0a33; --surface-hover: #240c40;
+	--row-stripe: #0b0414; --row-divider: #1a0a2e;
+	--text: #f3e6ff; --text-bright: #ffffff; --text-dim: #9a7ec4; --text-mute: #7a5e9e;
+	--border: #3a1a4d; --border-light: #5a2a7d; --border-soft: #241038;
+	--amber: #ff2bd6; --amber-dim: #7a156f; --amber-bright: #ff7ae6;
+	--accent: #ff2bd6; --accent-dim: #7a156f; --accent-bright: #ff7ae6;
+	--accent-soft: rgba(255, 43, 214, 0.14); --accent-ring: rgba(255, 43, 214, 0.6);
+	--fn-yellow: #3a1a4d;
+	--glow: 0 0 2px rgba(255, 43, 214, 0.3);
+}
+[data-theme="blueprint"] {
+	--bg: #0a1628; --panel-bg: #0c1a2e;
+	--surface-raised: #0e1f38; --surface-sunken: #122a48; --surface-hover: #163357;
+	--row-stripe: #0a1424; --row-divider: #13243f;
+	--text: #cfe8ff; --text-bright: #ffffff; --text-dim: #6a8cb8; --text-mute: #4a6a94;
+	--border: #1e3a5f; --border-light: #2a527d; --border-soft: #15293f;
+	--amber: #4fc3f7; --amber-dim: #1f6f9e; --amber-bright: #8ee0ff;
+	--accent: #4fc3f7; --accent-dim: #1f6f9e; --accent-bright: #8ee0ff;
+	--accent-soft: rgba(79, 195, 247, 0.14); --accent-ring: rgba(79, 195, 247, 0.6);
+	--fn-yellow: #1e3a5f;
+	--glow: 0 0 2px rgba(79, 195, 247, 0.3);
+}
+[data-theme="midnight"] {
+	--bg: #06080f; --panel-bg: #0a0e1a;
+	--surface-raised: #0d1322; --surface-sunken: #111a30; --surface-hover: #162038;
+	--row-stripe: #080b14; --row-divider: #11182a;
+	--text: #cdd6f4; --text-bright: #ffffff; --text-dim: #647099; --text-mute: #46506e;
+	--border: #1a2238; --border-light: #2a3550; --border-soft: #131a2c;
+	--amber: #7aa2ff; --amber-dim: #3a5299; --amber-bright: #aec5ff;
+	--accent: #7aa2ff; --accent-dim: #3a5299; --accent-bright: #aec5ff;
+	--accent-soft: rgba(122, 162, 255, 0.14); --accent-ring: rgba(122, 162, 255, 0.6);
+	--fn-yellow: #1a2238;
+	--glow: 0 0 2px rgba(122, 162, 255, 0.3);
+}
+[data-theme="solarized"] {
+	--bg: #002b36; --panel-bg: #073642;
+	--surface-raised: #094050; --surface-sunken: #0b4a5c; --surface-hover: #0d556a;
+	--row-stripe: #04303c; --row-divider: #0a4051;
+	--text: #93a1a1; --text-bright: #eee8d5; --text-dim: #586e75; --text-mute: #3d5359;
+	--border: #1d4a58; --border-light: #2d6072; --border-soft: #11485a;
+	--amber: #2aa198; --amber-dim: #157068; --amber-bright: #5fd1c8;
+	--accent: #2aa198; --accent-dim: #157068; --accent-bright: #5fd1c8;
+	--accent-soft: rgba(42, 161, 152, 0.16); --accent-ring: rgba(42, 161, 152, 0.6);
+	--fn-yellow: #1d4a58;
+	--glow: 0 0 2px rgba(42, 161, 152, 0.3);
+}
+
+/* Density overrides (first paint). Runtime ThemeProvider reinforces these. */
+[data-density="compact"] {
+	--font-size: 12px; --row-height: 20px; --line-height: 1.2;
+	--space-3: 5px; --space-4: 6px;
+}
+
+/* =======================================================================
+   Reset
+   ======================================================================= */
+*, *::before, *::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	overflow: hidden;
+	background: var(--bg);
+	color: var(--text);
+	font-family: var(--font);
+	font-size: var(--font-size);
+	line-height: var(--line-height);
+	-webkit-font-smoothing: none;
+	-moz-osx-font-smoothing: unset;
+}
+
+/* =======================================================================
+   Themed, visible-by-default scrollbars (replaces previous global hiding)
+   ======================================================================= */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--accent-dim) transparent;
+}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+	background: var(--border-light);
+	border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+::-webkit-scrollbar-corner { background: transparent; }
+
+input, button {
+	font-family: var(--font);
+	font-size: var(--font-size);
+	color: var(--text);
+	border: none;
+	outline: none;
+	background: transparent;
+}
+button { cursor: pointer; }
+a { color: var(--text); text-decoration: none; }
+
+/* =======================================================================
+   Visible keyboard focus indicators (accessibility)
+   ======================================================================= */
+:focus { outline: none; }
+:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 1px;
+	border-radius: var(--radius-sm);
+}
+
+/* =======================================================================
+   Cursor + flash animations
+   ======================================================================= */
+@keyframes blink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0; }
+}
+.cursor-blink { animation: blink 530ms step-end infinite; }
+
+@keyframes flash-positive {
+	0%, 100% { background-color: transparent; }
+	40% { background-color: var(--positive-soft); }
+}
+@keyframes flash-negative {
+	0%, 100% { background-color: transparent; }
+	40% { background-color: var(--negative-soft); }
+}
+.flash-positive { animation: flash-positive 600ms ease-out; }
+.flash-negative { animation: flash-negative 600ms ease-out; }
+
+/* =======================================================================
+   Motion utilities (token-driven)
+   ======================================================================= */
+@keyframes pane-in {
+	from { opacity: 0; transform: scale(0.985); }
+	to { opacity: 1; transform: none; }
+}
+@keyframes overlay-in {
+	from { opacity: 0; transform: translateY(4px); }
+	to { opacity: 1; transform: none; }
+}
+@keyframes toast-in {
+	from { opacity: 0; transform: translateY(8px); }
+	to { opacity: 1; transform: none; }
+}
+@keyframes fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+.pane-enter { animation: pane-in var(--motion-base) var(--ease-out); }
+.overlay-enter { animation: overlay-in var(--motion-fast) var(--ease-out); }
+.toast-enter { animation: toast-in var(--motion-base) var(--ease-spring); }
+.fade-enter { animation: fade-in var(--motion-base) var(--ease-out); }
+
+/* Shared transition helper for interactive rows / controls */
+.row-hover { transition: background-color var(--motion-fast) var(--ease-out), color var(--motion-fast) var(--ease-out); }
+
+/* =======================================================================
+   Text glow utility
+   ======================================================================= */
+.glow { text-shadow: 0 0 2px rgba(255, 176, 0, 0.3); }
+[data-glow="on"] .glow { text-shadow: 0 0 6px var(--accent); }
+
+/* =======================================================================
+   Opt-in decorative effects (off by default). Fixed overlays on <html>;
+   pointer-events:none so they never block interaction or shift layout.
+   ======================================================================= */
+html::before, html::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity var(--motion-slow) var(--ease-out);
+	z-index: 50;
+}
+[data-scanlines="on"]::before {
+	opacity: 1;
+	background: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 2px,
+		rgba(0, 0, 0, 0.18) 2px,
+		rgba(0, 0, 0, 0.18) 4px
+	);
+}
+[data-vignette="on"]::after {
+	opacity: 1;
+	box-shadow: inset 0 0 220px rgba(0, 0, 0, 0.85);
+}
+
+/* =======================================================================
+   Reduced-motion + animations preference
+   ======================================================================= */
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0ms !important;
+	}
+}
+
+/* Tabular figures help dense market data align like a terminal */
+.tabular, [data-terminal] {
+	font-variant-numeric: tabular-nums;
+}
+[data-animations="off"] *, [data-animations="off"] *::before, [data-animations="off"] *::after {
+	animation: none !important;
+	transition: none !important;
+}
